@@ -57,9 +57,17 @@ export default function TextBox(props) {
         style={{ color: props.mode === "dark" ? "white" : "black" }}
       >
         <h4 className="my-2">
-          Summary : {text.split(" ").length} words and {text.length} characters{" "}
+          Summary :
+          {
+            text.split(" ").filter(function(n) {
+              return n !== "";
+            }).length
+          }{" "}
+          words and {text.length} characters{" "}
           <i>
-            Read Time : {(0.008 * text.split(" ").length).toFixed(2)} minutes
+            Read Time : {(0.008 *text.split(" ").filter(function(n) {
+              return n !== "";
+            }).length).toFixed(2)} minutes
           </i>
         </h4>
 
