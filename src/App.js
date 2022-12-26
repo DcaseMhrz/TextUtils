@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextBox from './components/TextBox';
 
@@ -18,10 +19,11 @@ function App() {
   }
   return (
     <>
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
-    <div className="container">
-    <TextBox mode={mode}/>
-    </div>
+      <Navbar title="TextUtils" />
+      <Alert/>
+      <div className="container">
+        <TextBox />
+      </div>
     </>
   );
 }
