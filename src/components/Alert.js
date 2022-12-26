@@ -2,7 +2,7 @@ import React from 'react'
 
 function Alert(props) {
     return (
-        <div class={`alert alert-${props.alert.type}`} role="alert">
+        props.alert &&<div className="alert alert-success" role="alert">
             {props.alert.message}
         </div>
     )

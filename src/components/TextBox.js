@@ -5,15 +5,19 @@ export default function TextBox(props) {
 
   function upclickHandler() {
     setText(text.toUpperCase());
+    props.showAlert("sucess", "Changed to Uppercase");
   }
   function lowclickHandler() {
     setText(text.toLowerCase());
+    props.showAlert("sucess", "Changed to Lowercase");
   }
   function copyhandler() {
     navigator.clipboard.writeText(text);
+    props.showAlert("sucess", "Copied to Clipboard");
   }
   function clearHandler() {
     setText("");
+    props.showAlert("sucess", "Cleared");
   }
 
   function changeHandler(e) {
