@@ -15,6 +15,11 @@ export default function TextBox(props) {
     navigator.clipboard.writeText(text);
     props.showAlert("sucess", "Copied to Clipboard");
   }
+  function remHandler() {
+    setText(text.replace(/\s+/g, ' ').trim())
+    props.showAlert("sucess", "Extra spaces removed");
+  }
+
   function clearHandler() {
     setText("");
     props.showAlert("sucess", "Cleared");
@@ -38,17 +43,20 @@ export default function TextBox(props) {
           id="textBox"
           rows="8"
         ></textarea>
-        <button className="btn btn-primary mx-2" onClick={upclickHandler}>
+        <button disabled={text<1} className="btn btn-primary mx-1 my-1" onClick={upclickHandler}>
           Change to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={lowclickHandler}>
+        <button disabled={text<1} className="btn btn-primary mx-1 my-1" onClick={lowclickHandler}>
           Change to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={clearHandler}>
-          Clear Text
+        <button disabled={text<1} className="btn btn-primary mx-1 my-1" onClick={remHandler}>
+          Remove Extra Spaces
         </button>
-        <button className="btn btn-primary mx-2" onClick={copyhandler}>
-          Copy
+        <button disabled={text<1} className="btn btn-primary mx-1 my-1" onClick={copyhandler}>
+          Copy to ClipBoard
+        </button>
+        <button disabled={text<1} className="btn btn-primary mx-1 my-1" onClick={clearHandler}>
+          Clear Text
         </button>
       </div>
 
@@ -59,13 +67,13 @@ export default function TextBox(props) {
         <h4 className="my-2">
           Summary :
           {
-            text.split(" ").filter(function(n) {
+            text.split(/\s+/).filter(function(n) {
               return n !== "";
             }).length
           }{" "}
           words and {text.length} characters{" "}
           <i>
-            Read Time : {(0.008 *text.split(" ").filter(function(n) {
+            Read Time : {(0.008 *text.split(/\s+/).filter(function(n) {
               return n !== "";
             }).length).toFixed(2)} minutes
           </i>
